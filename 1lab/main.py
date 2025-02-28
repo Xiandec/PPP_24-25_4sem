@@ -1,7 +1,7 @@
-
+from server import Server
 def main():
-    # Ваш код здесь
-    pass
+    server = Server()
+    server.start()
 
 if __name__ == "__main__":
     main()
