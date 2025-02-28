@@ -6,7 +6,7 @@ import logging
 from typing import Dict, List, Union
 import struct
 
-from config import HOST, PORT
+from config import HOST, PORT, LOG_LEVEL
 
 
 def setup_logger():
@@ -17,14 +17,13 @@ def setup_logger():
         logging.Logger: Объект логгера с установленным уровнем INFO и выводом в консоль.
     """
     logger = logging.getLogger('server_logger')
-    logger.setLevel(logging.INFO)
+    logger.setLevel(LOG_LEVEL)
 
     # Создаем форматтер для логов
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
     # Хендлер для вывода в консоль важных сообщений
     console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(formatter)
 
     logger.addHandler(console_handler)
