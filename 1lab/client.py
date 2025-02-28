@@ -58,12 +58,7 @@ class Client:
             Exception: При ошибке обработки команды.
         """
         os.system('clear || cls')
-        print("\nДоступные команды:")
-        print("  ls <путь_к_каталогу> - просмотр содержимого директории")
-        print("  cd <путь> - сменить директорию")
-        print("  cd .. - перейти на уровень выше")
-        print("  clear - очистить консоль")
-        print("  exit - выход\n")
+
 
         while True:
             try:
@@ -87,10 +82,18 @@ class Client:
                     self.change_root(new_root)
                 elif command.startswith('clear'):
                     os.system('clear || cls')
+                elif command.startswith('help'):
+                    os.system('clear || cls')
+                    print("ls - просмотр содержимого директории")
+                    print("cd - сменить директорию")
+                    print("cd .. - перейти на уровень выше")
+                    print("clear - очистить консоль")
+                    print("help - помощь")
+                    print("exit - выход")
 
                 else:
                     os.system('clear || cls')
-                    print("Неизвестная команда")
+                    print("Неизвестная команда. Введите help для получения помощи.")
             except KeyboardInterrupt:
                 print("Сервер остановлен")
                 self.disconnect()

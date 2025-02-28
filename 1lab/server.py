@@ -6,7 +6,13 @@ import logging
 from typing import Dict, List, Union
 import struct
 
-from config import HOST, PORT, LOG_LEVEL
+from config import (
+    HOST,
+    PORT,
+    LOG_LEVEL,
+    MAX_ITEMS,
+    MAX_RESPONSE_SIZE
+)
 
 
 def setup_logger():
@@ -217,9 +223,6 @@ class Server:
 
             if not os.path.exists(target_path):
                 return {"error": "Путь не существует"}
-
-            MAX_ITEMS = 100  # Максимальное количество элементов в директории
-            MAX_RESPONSE_SIZE = 2048  # Оставляем запас для JSON-форматирования
 
             for root, dirs, files in os.walk(target_path):
                 relative_root = os.path.relpath(root, self.root_dir)
